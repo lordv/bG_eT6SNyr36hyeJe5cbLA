@@ -17,7 +17,8 @@
  */
 
 #include<stdio.h>
-#include "symbol_table.h"
+#include"symbol_table.h"
+#include<stdlib.h>
 
 
 ST_entry * table[PRIME];
@@ -51,13 +52,13 @@ ST_entry * installID(char * s, int len, int tkn)
 	{
 		char * ptr = malloc(len*sizeof(char));
 		strncpy(ptr, s, len);
-		ST_entry t;
-		t.entry.token = tkn;
-		t.entry.name = ptr;
+		ST_entry * t = (ST_entry *)malloc(sizeof(ST_entry));
+		t->entry.token = tkn;
+		t->entry.name = ptr;
 		hash = hashpjw(s);
 		ST_entry * tem = table[hash];
-		t.next = tem;
-		table[hash] = &t;
+		t->next = tem;
+		table[hash] = t;
 		return table[hash];
 	}
 }

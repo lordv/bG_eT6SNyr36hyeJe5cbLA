@@ -76,7 +76,7 @@ void print(void * value, int tok)
 			printf("<MULOP, '%s' >\n", (char *)value);
 			break;
 		case ID:
-			printf("<ID, '%s' >\n", ((ST_entry *)value)->entry.name);
+			printf("<ID,'%s'>\n", ((ST_entry *)value)->entry.name);
 			break;
 		default:
 			printf("unrecognized\n");
