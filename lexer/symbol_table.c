@@ -50,8 +50,9 @@ ST_entry * installID(char * s, int len, int tkn)
 	}
 	else
 	{
-		char * ptr = malloc(len*sizeof(char));
+		char * ptr = malloc((len + 1)*sizeof(char));
 		strncpy(ptr, s, len);
+		ptr[len] = '\0';
 		ST_entry * t = (ST_entry *)malloc(sizeof(ST_entry));
 		t->entry.token = tkn;
 		t->entry.name = ptr;

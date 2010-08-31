@@ -10,7 +10,7 @@ int yylineno;
 void print(void * val, int tk);
 %}
 
-comment [{].*[}]
+comment [{](.)*[}]
 delim	[ \t\n]
 ws	{delim}+
 letter	[A-Za-z]
@@ -40,7 +40,17 @@ end				{printf("<END>\n");return END;}
 [+-]|(or)			{value = (void *)yytext; print(value, ADDOP);return ADDOP;} 
 {relop}				{value = (void *)yytext; print(value, RELOP);return RELOP;}
 [*/]|(div)|(mod)|(and)		{value = (void *)yytext; print(value, MULOP);return MULOP;} 
-:=				{return ASSIGNOP;}
+:=				{printf("<ASSIGNOP>\n"); return ASSIGNOP;}
+,				{printf("<COMMA>\n"); return COMMA;}
+[[]				{printf("<LSQB>\n"); return LSQB;}
+[]]				{printf("<RSQB>\n"); return RSQB;}
+[(]				{printf("<LPARENTHESIS>\n"); return LPARENTHESIS;}
+[)]				{printf("<RPARENTHESIS>\n"); return RPARENTHESIS;}
+[;]				{printf("<SEMICOLON>\n"); return SEMICOLON;}
+[:]				{printf("<COLON>\n"); return COLON;}
+[.]				{printf("<DOT>\n"); return DOT;}
+[']				{printf("<SINGLEQUOTE>\n"); return SINGLEQUOTE;}
+["]				{printf("<DOUBLEQUOTE>\n"); return DOUBLEQUOTE;}
 {id}				{value = installID(yytext, yyleng, ID);print(value, ID); return ID;} 
 
 %%
