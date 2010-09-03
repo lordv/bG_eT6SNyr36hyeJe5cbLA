@@ -71,10 +71,12 @@ enum
 	DOUBLEQUOTE
 };
 
-int hashpjw(char * s);
+int hashpjw(char * s);					//hash function
 
-ST_entry * installID(char * s, int len, int tok);
+ST_entry * installID(char * s, int len, int tok);	//to installID in the table
 
-ST_entry * lookup(char * s);
+ST_entry * lookup(char * s);				//To lookup in the table
+
+void print_table();					//to print the table
 
 #endif   /* ----- #ifndef SYMBOL_TABLE_INC  ----- */

@@ -78,3 +78,25 @@ ST_entry * lookup(char * s)
 	}
 	return NULL;
 }
+
+void print_table()
+{
+	int i = 0;
+	ST_entry * tem;
+
+	printf("Printing symbol table... \n\n\nIndex\t<address, ID_name>\n\n----------------------------\n\n");
+	for(i = 0;i < PRIME;i++)
+	{
+		tem = table[i];
+		if(tem != NULL)
+		{
+			printf("%d\t", i);
+			while(tem != NULL)
+			{
+				printf("<%p, %s>\t", tem, tem->entry.name);
+				tem = tem->next;
+			}
+			printf("\n");
+		}
+	}
+}

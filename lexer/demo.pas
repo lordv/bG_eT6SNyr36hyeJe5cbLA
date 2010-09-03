@@ -4,7 +4,7 @@ uses WinTypes, WinProcs, WObjects;
 {Tells the compiler which libraries are needed}
 
 type
-  PTheWindow = ^TTheWindow;  
+  PTheWindow = TTheWindow;  
 {creates a pointer ready for the main window}
   TTheWindow = object(TWindow) 
 {assigns the pointer to the window}
